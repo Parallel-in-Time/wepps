@@ -27,3 +27,6 @@ dependencies = [
 
 [project.urls]
 "Homepage" = "https://github.com/Parallel-in-Time/wepps"
+
+[tool.hatch.build]
+exclude = ["frontend*"]
