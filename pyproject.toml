@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "wepps"
-version = "0.1.0"
+version = "0.1.1"
 license = {text = "BSD-2-Clause"}
 authors = [
   { name="Michel Krispin", email="michel.krispin@gmail.com" },
@@ -18,7 +18,7 @@ classifiers = [
 ]
 dependencies = [
     "numpy~=1.23",
-    "Flask~=2.2",
+    "flask~=2.2",
     "plotly~=5.13",
     "mistune~=2.0",
     "emoji~=2.6",

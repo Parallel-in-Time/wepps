@@ -8,7 +8,6 @@ import Stages from './stages/Stages';
 import {
   DocumentationButton,
   DocumentationModal,
-  HomeButton,
 } from './StaticElements.js';
 import { useEffect, useState } from 'react';
 
@@ -48,7 +47,6 @@ function App() {
 
   return (
     <>
-      <HomeButton />
       <DocumentationButton toggleVisibility={toggleVisibility} />
       {modal}
       <div className='uk-height-1-1 uk-padding uk-background-muted'>
