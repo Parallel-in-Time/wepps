@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title }}</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="{{ url_for_root('favicon') }}"
+    />
+    <meta name="description" content="description" />
+    <meta name="author" content="author" />
+    <meta name="keywords" content="keywords" />
+
+    <!-- UIkit CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/uikit@3.16.15/dist/css/uikit.min.css"
+    />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.15/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.15/dist/js/uikit-icons.min.js"></script>
+
+    <!-- CSS for loader -->
+    <style type="text/css">
+      #loading {
+        position: fixed;
+        top: calc(50% - 64px);
+        left: calc(50% - 64px);
+        transform: translate(-50%, -50%);
+        transform: -webkit-translate(-50%, -50%);
+        transform: -moz-translate(-50%, -50%);
+        transform: -ms-translate(-50%, -50%);
+        color: darkred;
+      }
+      .lds-ring {
+        display: inline-block;
+        position: relative;
+        width: 80px;
+        height: 80px;
+      }
+      .lds-ring div {
+        box-sizing: border-box;
+        display: block;
+        position: absolute;
+        width: 128px;
+        height: 128px;
+        margin: 8px;
+        border: 8px solid rgb(0, 0, 0);
+        border-radius: 50%;
+        animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        border-color: rgb(0, 0, 0) transparent transparent transparent;
+      }
+      .lds-ring div:nth-child(1) {
+        animation-delay: -0.45s;
+      }
+      .lds-ring div:nth-child(2) {
+        animation-delay: -0.3s;
+      }
+      .lds-ring div:nth-child(3) {
+        animation-delay: -0.15s;
+      }
+      @keyframes lds-ring {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+
+    <script>
+      // Remove loader after app is loaded
+      document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('loading').remove();
+      });
+    </script>
+  </head>
+  <body>
+    <!-- React -->
+    <div id="root"></div>
+
+    <!-- Loading circle -->
+    <div id="loading">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+
+    {% if not json_file %}
+    <!-- Dev Mode for Vite -->
+    <script type="module">
+      import RefreshRuntime from 'http://localhost:5173/@react-refresh';
+      RefreshRuntime.injectIntoGlobalHook(window);
+      window.$RefreshReg$ = () => {};
+      window.$RefreshSig$ = () => (type) => type;
+      window.__vite_plugin_react_preamble_installed__ = true;
+    </script>
+    <script type="module" src="http://localhost:5173/@vite/client"></script>
+    <script type="module" src="http://localhost:5173/src/main.tsx"></script>
+    {% else %}
+    <link rel="stylesheet" href="{{ url_for_root('assets', file=css_file) }}" />
+    <script
+      type="module"
+      src="{{ url_for_root('assets', file=json_file) }}"
+    ></script>
+    {% endif %}
+
+    <!-- Math Equation Renderer -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+      integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+      integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
