@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "wepps"
-version = "0.1.1"
+version = "0.2.0"
 license = {text = "BSD-2-Clause"}
 authors = [
   { name="Michel Krispin", email="michel.krispin@gmail.com" },
