@@ -136,7 +136,7 @@ class Site:
         @self.flask_app.route("/doc/images/<file>")
         def doc(file):
             return send_from_directory(
-                os.path.join(self.flask_app.root_path, "static", "doc", "images"),
+                os.path.join(os.getcwd(), "doc", "images"),
                 file,
             )
 
